@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 
 namespace DreamingHome.Models
 {
@@ -11,5 +12,11 @@ namespace DreamingHome.Models
         public string Country { get; set; }
         public string Province { get; set; }
         public string City { get; set; }
+        public bool IsDesigner { get; set; }
+    }
+
+    public class UserViewModel
+    {
+        public List<User> Users { get; set; }
     }
 }
