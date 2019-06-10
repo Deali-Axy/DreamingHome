@@ -13,10 +13,8 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
 
-namespace DreamingHome
-{
-    public class Startup
-    {
+namespace DreamingHome {
+    public class Startup {
         public Startup(IConfiguration configuration)
         {
             Configuration = configuration;
@@ -34,12 +32,10 @@ namespace DreamingHome
 
         public void Configure(IApplicationBuilder app, IHostingEnvironment env)
         {
-            if (env.IsDevelopment())
-            {
+            if (env.IsDevelopment()) {
                 app.UseDeveloperExceptionPage();
             }
-            else
-            {
+            else {
                 // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
                 app.UseHsts();
             }
