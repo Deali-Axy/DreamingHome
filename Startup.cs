@@ -29,10 +29,7 @@ namespace DreamingHome
         {
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
             services.AddEntityFrameworkSqlite()
-                .AddDbContext<CaseContext>(options => options.UseSqlite(Configuration["database:connection"]))
-                .AddDbContext<PlaceContext>(options => options.UseSqlite(Configuration["database:connection"]))
-                .AddDbContext<PostContext>(options => options.UseSqlite(Configuration["database:connection"]))
-                .AddDbContext<UserContext>(options => options.UseSqlite(Configuration["database:connection"]));
+                .AddDbContext<MainContext>(options => options.UseSqlite(Configuration["database:connection"]));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

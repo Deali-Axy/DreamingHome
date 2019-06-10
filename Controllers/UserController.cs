@@ -16,7 +16,7 @@ namespace DreamingHome.Controllers
         public JsonResult Get()
         {
             var model = new UserViewModel();
-            using (var context = new UserContext())
+            using (var context = new MainContext())
             {
                 SQLUserData sqlData = new SQLUserData(context);
                 model.Users = sqlData.GetAll();
@@ -44,9 +44,9 @@ namespace DreamingHome.Controllers
 
     public class SQLUserData
     {
-        private UserContext _context { get; set; }
+        private MainContext _context { get; set; }
 
-        public SQLUserData(UserContext context)
+        public SQLUserData(MainContext context)
         {
             _context = context;
         }

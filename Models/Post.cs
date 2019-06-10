@@ -13,7 +13,9 @@ namespace DreamingHome.Models
         public string Id { get; set; }
         public User Author { get; set; }
         public string Contetnt { get; set; }
-        public string[] PicuresUrl { get; set; }
+
+        [System.ComponentModel.DataAnnotations.Schema.NotMapped]
+        public List<string> PicuresUrl { get; set; }
         /// <summary>
         /// 位置
         /// </summary>
@@ -22,5 +24,10 @@ namespace DreamingHome.Models
         /// 发布时间
         /// </summary>
         public DateTime Time { get; set; }
+    }
+
+    public class PostViewModel
+    {
+        public List<Post> Posts { get; set; }
     }
 }
