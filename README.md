@@ -11,6 +11,24 @@ services.AddEntityFrameworkSqlite()
     .AddDbContext<MainContext>(options => options.UseSqlite(Configuration["database:connection"]));
 ```
 
+## 数据库上下文 `DbContext`
+```bash
+public class MainContext : DbContext
+{
+    public MainContext() { }
+    public MainContext(DbContextOptions<MainContext> options) : base(options) { }
+
+    protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+    {
+        var builder = new ConfigurationBuilder().SetBasePath(Directory.GetCurrentDirectory()).AddJsonFile("appsettings.json");
+        var configuration = builder.Build();
+        optionsBuilder.UseSqlite(configuration["database:connection"]);
+    }
+}
+```
+这里我遇到一个很奇怪的问题，单纯在`Startup.cs`里面注册EFCore根本不行，运行的时候老是提示我`No database provider`，只能在`DbContext`里面再重写这个`OnConfiguring`，重新配置一遍数据库= =...
+
+
 ## 数据库迁移
 创建数据库迁移：
 ```bash
