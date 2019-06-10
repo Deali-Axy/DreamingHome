@@ -26,6 +26,7 @@ namespace DreamingHome
         public DbSet<Place> Places { get; set; }
         public DbSet<Post> Posts { get; set; }
         public DbSet<PostPicture> PostPictures { get; set; }
+        public DbSet<Session> Sessions { get; set; }
         public DbSet<User> Users { get; set; }
     }
 }

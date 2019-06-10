@@ -8,7 +8,7 @@ namespace DreamingHome.Models
     public class PostPicture
     {
         public string Id { get; set; }
-        public string PostId { get; set; }
+        public Post Post { get; set; }
         public string PictureUrl { get; set; }
     }
 }
