@@ -9,6 +9,12 @@ namespace DreamingHome.Utils
         {
         }
 
+        public Response(bool success, string message)
+        {
+            this.Success = success;
+            this.Message = message;
+        }
+
         public Response(bool success, string message, object data)
         {
             this.Success = success;

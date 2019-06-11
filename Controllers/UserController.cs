@@ -5,7 +5,6 @@ using System.Threading.Tasks;
 using DreamingHome.Models;
 using DreamingHome.Utils;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore.ChangeTracking;
 
 namespace DreamingHome.Controllers
 {
@@ -75,6 +74,17 @@ namespace DreamingHome.Controllers
                 return new Response(true, result ? "注册成功" : "注册失败", data);
             }
         }
+
+        [HttpGet("logout")]
+        public ActionResult<Response> Logout(string id)
+        {
+            using (var context = new MainContext())
+            {
+                var sessionData = new SqlSessionData(context);
+                var result = sessionData.DeleteByUserId(id);
+                return new Response(result, result ? "注销成功" : "注销失败");
+            }
+        }
     }
 
     public class SqlSessionData
@@ -97,6 +107,11 @@ namespace DreamingHome.Controllers
             return _context.Sessions.FirstOrDefault(s => s.Id == id);
         }
 
+        public Session GetByUser(User user)
+        {
+            return _context.Sessions.FirstOrDefault(s => s.User == user);
+        }
+
         public bool Delete(string id)
         {
             try
@@ -109,6 +124,20 @@ namespace DreamingHome.Controllers
             catch (Exception)
             {
                 Console.WriteLine("删除失败");
+                return false;
+            }
+        }
+
+        public bool DeleteByUserId(string id)
+        {
+            try
+            {
+                var sessionModel = _context.Sessions.FirstOrDefault(s => s.User.Id == id);
+                _context.Sessions.Remove(sessionModel);
+                return _context.SaveChanges() > 0;
+            }
+            catch (Exception)
+            {
                 return false;
             }
         }
@@ -133,6 +162,11 @@ namespace DreamingHome.Controllers
         {
             return _context.Users.FirstOrDefault(u => u.Id == id);
         }
+        
+        public List<User> GetAll()
+        {
+            return _context.Users.ToList<User>();
+        }
 
         public User GetByPhone(string phone)
         {
@@ -153,11 +187,6 @@ namespace DreamingHome.Controllers
                 Console.WriteLine("删除失败");
                 return false;
             }
-        }
-
-        public List<User> GetAll()
-        {
-            return _context.Users.ToList<User>();
         }
     }
 }
