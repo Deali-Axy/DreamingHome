@@ -1,6 +1,13 @@
 # DreamingHome
 Dreaming Home 梦想家，家装平台
 
+## 项目依赖
+- .Net Core SDK 2.2
+- Asp.Net Core 2.2
+- Asp.Net Core Razor 2.2
+- EntityFramework 2.2.4
+- Swagger 5.0 rc2
+
 ## EF Core概念
 - `Model`: 数据模型，一个普通的C#类
 - `DbContext`: 与数据库沟通的桥梁，一个数据库对应一个`DbContext`
@@ -12,7 +19,7 @@ services.AddEntityFrameworkSqlite()
 ```
 
 ## 数据库上下文 `DbContext`
-```bash
+```c#
 public class MainContext : DbContext
 {
     public MainContext() { }
