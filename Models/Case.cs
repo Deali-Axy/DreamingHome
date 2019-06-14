@@ -32,4 +32,9 @@ namespace DreamingHome.Models
         public string Location { get; set; }
         public DateTime Time { get; set; }
     }
+
+    public class CaseViewModel
+    {
+        public List<Case > Cases { get; set; }
+    }
 }

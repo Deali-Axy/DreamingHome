@@ -6,6 +6,9 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace DreamingHome.Controllers
 {
+    /// <summary>
+    /// 测试接口，可以不管
+    /// </summary>
     [Route("api/[controller]")]
     [ApiController]
     public class TestController : ControllerBase

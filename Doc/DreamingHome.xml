@@ -1,0 +1,91 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>DreamingHome</name>
+    </assembly>
+    <members>
+        <member name="M:DreamingHome.Controllers.PostController.#ctor(Microsoft.AspNetCore.Hosting.IHostingEnvironment)">
+            <summary>
+            依赖注入：获取项目的根目录地址
+            </summary>
+            <param name="hostingEnvironment"></param>
+        </member>
+        <member name="T:DreamingHome.Controllers.UserController">
+            <summary>
+            用户
+            </summary>
+        </member>
+        <member name="M:DreamingHome.Controllers.UserController.Get">
+            <summary>
+            获取所有用户信息
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:DreamingHome.Controllers.UserController.Login(DreamingHome.Models.User)">
+            <summary>
+            用户登录
+            </summary>
+            <param name="loginUser"></param>
+            <returns></returns>
+        </member>
+        <member name="M:DreamingHome.Controllers.UserController.SignUp(DreamingHome.Models.User)">
+            <summary>
+            用户注册
+            </summary>
+            <param name="user"></param>
+            <returns></returns>
+        </member>
+        <member name="M:DreamingHome.Controllers.UserController.Logout(System.String)">
+            <summary>
+            用户注销
+            </summary>
+            <param name="id"></param>
+            <returns></returns>
+        </member>
+        <member name="T:DreamingHome.Models.Case">
+            <summary>
+            整屋装修案例
+            </summary>
+        </member>
+        <member name="P:DreamingHome.Models.Case.HouseType">
+            <summary>
+            户型
+            </summary>
+        </member>
+        <member name="P:DreamingHome.Models.Case.Area">
+            <summary>
+            面积
+            </summary>
+        </member>
+        <member name="P:DreamingHome.Models.Case.Cost">
+            <summary>
+            花费
+            </summary>
+        </member>
+        <member name="P:DreamingHome.Models.Case.Location">
+            <summary>
+            位置
+            </summary>
+        </member>
+        <member name="T:DreamingHome.Models.Place">
+            <summary>
+            位置，比如：客厅、卧室、厨房、洗手间
+            </summary>
+        </member>
+        <member name="T:DreamingHome.Models.Post">
+            <summary>
+            发布的post
+            </summary>
+        </member>
+        <member name="P:DreamingHome.Models.Post.Place">
+            <summary>
+            位置
+            </summary>
+        </member>
+        <member name="P:DreamingHome.Models.Post.Time">
+            <summary>
+            发布时间
+            </summary>
+        </member>
+    </members>
+</doc>

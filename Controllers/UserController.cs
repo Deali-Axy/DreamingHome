@@ -8,12 +8,21 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace DreamingHome.Controllers
 {
+    /// <summary>
+    /// 用户
+    /// </summary>
     [Route("api/[controller]")]
     [ApiController]
     public class UserController : ControllerBase
     {
+        /// <summary>
+        /// 获取所有用户信息
+        /// </summary>
+        /// <returns>用户列表</returns>
+        /// <response code="200">返回所有用户列表</response>
         [HttpGet]
-        public JsonResult Get()
+        [ProducesResponseType(200)]
+        public ActionResult<Response> Get()
         {
             var model = new UserViewModel();
             using (var context = new MainContext())
@@ -22,16 +31,27 @@ namespace DreamingHome.Controllers
                 model.Users = sqlData.GetAll();
             }
 
-            return new JsonResult(model.Users);
+            return new Response(true, "获取所有用户信息", new {Users = model.Users});
         }
 
-        [Route("test")]
+        /// <summary>
+        /// 测试接口，不用管这个
+        /// </summary>
+        /// <returns></returns>
+        [HttpGet("test")]
         public JsonResult Test()
         {
             return new JsonResult("测试一下");
         }
 
+        /// <summary>
+        /// 用户登录
+        /// </summary>
+        /// <param name="loginUser">用户信息</param>
+        /// <returns>登录结果以及Session</returns>
+        /// <response code="200">返回登录结果以及Session</response>
         [HttpPost("login")]
+        [ProducesResponseType(200)]
         public ActionResult<Response> Login([FromBody] User loginUser)
         {
             using (var context = new MainContext())
@@ -58,7 +78,14 @@ namespace DreamingHome.Controllers
             }
         }
 
+        /// <summary>
+        /// 用户注册
+        /// </summary>
+        /// <param name="user">用户信息</param>
+        /// <returns>注册结果以及Session</returns>
+        /// <response code="200">返回注册结果以及Session</response>
         [HttpPost("signup")]
+        [ProducesResponseType(200)]
         public ActionResult<Response> SignUp([FromBody] User user)
         {
             if (user == null)
@@ -75,7 +102,14 @@ namespace DreamingHome.Controllers
             }
         }
 
+        /// <summary>
+        /// 用户注销
+        /// </summary>
+        /// <param name="id">用户id</param>
+        /// <returns>注销结果</returns>
+        /// <response code="200">返回注销结果</response>
         [HttpGet("logout")]
+        [ProducesResponseType(200)]
         public ActionResult<Response> Logout(string id)
         {
             using (var context = new MainContext())
@@ -162,7 +196,7 @@ namespace DreamingHome.Controllers
         {
             return _context.Users.FirstOrDefault(u => u.Id == id);
         }
-        
+
         public List<User> GetAll()
         {
             return _context.Users.ToList<User>();
