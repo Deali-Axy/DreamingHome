@@ -8,6 +8,10 @@ Dreaming Home 梦想家，家装平台
 - EntityFramework 2.2.4
 - Swagger 5.0 rc2
 
+## 数据库ER图
+
+![](https://raw.githubusercontent.com/Deali-Axy/BlogImageHosting/master/img/ER.png)
+
 ## EF Core概念
 - `Model`: 数据模型，一个普通的C#类
 - `DbContext`: 与数据库沟通的桥梁，一个数据库对应一个`DbContext`
