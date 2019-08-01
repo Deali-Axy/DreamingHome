@@ -1,5 +1,5 @@
 # DreamingHome
-Dreaming Home 梦想家，家装平台
+Dreaming Home 梦想家，家装设计分享 & 寻找设计师一站式平台。
 
 ## 项目依赖
 - .Net Core SDK 2.2
